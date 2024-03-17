@@ -5,8 +5,8 @@ export async function sendMail(email: string, subject: string, message: string) 
     service: "gmail",
     port: 2525,
     auth: {
-      user: process.env.SMTP_USERNAME,
-      pass: process.env.SMTP_PASSWORD,
+      user: "kano24022@gmail.com",
+      pass: "sybcblddenlwztfw",
     }
   })  
 
