@@ -8,7 +8,8 @@ export async function sendMail(email: string, subject: string, message: string) 
     auth: {
       user: process.env.SMTP_USERNAME,
       pass: process.env.SMTP_PASSWORD,
-    }
+    },
+    debug: true
   })  
 
   const Options = {
