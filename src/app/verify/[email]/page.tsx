@@ -1,5 +1,5 @@
 "use client";
-import { useSearchParams, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { setCredentials } from "@/lib/slices/authSlice";
 import { useAppDispatch } from "@/lib/hooks";
@@ -8,10 +8,10 @@ import Header from "@/components/Header";
 import VerifyCode from "@/components/VerifyCode";
 import { useVerifyEmailMutation } from "@/lib/services/api";
 
-export default function Verify() {
+export default function Verify({ params }: any) {
   const router = useRouter();
   const dispatch = useAppDispatch();
-  const email = useSearchParams().get("email");
+  const email = params.email.replace(/%40/, "@");
   const [verify, { isLoading }] = useVerifyEmailMutation();
   const [code, setCode] = useState("");
   const [error, setError] = useState<string>("");
@@ -20,15 +20,16 @@ export default function Verify() {
     return router.push("/login");
   }
 
-  async function handleVerify() {
+  const handleVerifyEmail = async (e: any) => {
+    e.preventDefault()
     const res: any = await verify({ email, code });
     if (res.data) {
       dispatch(
         setCredentials({
           isLoggedIn: true,
-          id: res?.data.user.id,
-          name: res?.data?.user.name,
-          email: res?.data?.user.email,
+          id: res?.data.user?.id,
+          name: res?.data?.user?.name,
+          email: res?.data?.user?.email,
         })
       );
       return router.push("/");
@@ -59,7 +60,7 @@ export default function Verify() {
               <VerifyCode code={code} setCode={setCode} />
             </div>
             <button
-              onClick={handleVerify}
+              onClick={handleVerifyEmail}
               className="w-full rounded-md bg-black h-14 font-medium text-white tracking-wider my-5"
               disabled={code.length < 8}
             >

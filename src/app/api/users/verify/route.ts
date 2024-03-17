@@ -4,7 +4,7 @@ import { NextRequest, NextResponse } from "next/server";
 export async function POST(req: NextRequest) {
   try {
     const { email, code } = await req.json()
-    
+
     if (!email || !code) {
       throw new Error("Invalid credentail")
     }
@@ -18,7 +18,12 @@ export async function POST(req: NextRequest) {
     if (user?.verify_code == 1) {
       return NextResponse.json({
         success: true,
-        message: "user already verified"
+        message: "user already verified",
+        user: {
+          id: user.id,
+          name: user.name,
+          email: user.email
+        }
       }, { status: 200 })
     }
 

@@ -26,7 +26,7 @@ export default function SignUp() {
         const res: any = await signUp(values);
         if (res.data) {
           setError("")
-          router.push(`/verify?email=${values.email}`);
+          router.push(`/verify/${values.email}`);
         }
         if(res.error) {
           setError(res.error.data.error)
