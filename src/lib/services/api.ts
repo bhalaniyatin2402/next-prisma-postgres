@@ -31,7 +31,11 @@ const api = createApi({
       })
     }),
     getLoggedInUserDetails: builder.query({
-      query: ({ id }) => `/users/me?id=${id}`,
+      query: (data) => ({
+        url: `/users/me`,
+        method: "POST",
+        body: data
+      }),
       providesTags: ["User"]
     }),
     getCategoryList: builder.query({

@@ -23,7 +23,7 @@ export default function Home() {
   } = useGetCategoryListQuery(null);
 
   if (isLoading || loading) {
-    return;
+    return <h1 className="text-center text-4xl my-6">Loading...</h1>
   }
 
   if (error || err) {

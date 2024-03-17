@@ -3,11 +3,9 @@ import prisma from "@/lib/prisma";
 import { NextRequest, NextResponse } from "next/server";
 import { URLSearchParams } from "url";
 
-export async function GET(req: NextRequest) {
+export async function POST(req: NextRequest) {
   try {
-    const url : any = req.url
-    const params = new URLSearchParams(url)
-    const id = Number(params.get('http://localhost:3000/api/users/me?id'))
+    const { id } = await req.json();
 
     if(!id) {
       throw new Error("Invalid User")
