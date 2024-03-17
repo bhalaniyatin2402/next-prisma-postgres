@@ -14,9 +14,9 @@ export async function POST(req: NextRequest) {
       where: { email }
     })
 
-    if(user?.verify_code !== 1) {
-      throw new Error("please verify your email first")
-    }
+    // if(user?.verify_code !== 1) {
+    //   throw new Error("please verify your email first")
+    // }
 
     const isCorrectPassword = await bcrypt.compare(password, user?.password!)
 
