@@ -44,14 +44,14 @@ export default function Header() {
             </nav>
             <div className="flex gap-5">
               <Image
-                src={"./images/icn_search.svg"}
+                src={"/images/icn_search.svg"}
                 alt="search_icon"
                 width={32}
                 height={32}
                 className="h-8 w-8"
               />
               <Image
-                src={"./images/icn_cart.svg"}
+                src={"/images/icn_cart.svg"}
                 alt="cart_icon"
                 width={32}
                 height={32}
@@ -66,7 +66,7 @@ export default function Header() {
         <div className="container px-2">
           <div className="h-9 flex justify-center items-center gap-4">
             <Image
-              src={"./images/icn_left_arrow.svg"}
+              src={"/images/icn_left_arrow.svg"}
               alt="cart_icon"
               width={16}
               height={16}
@@ -75,7 +75,7 @@ export default function Header() {
               Get 10% off on business sign up
             </p>
             <Image
-              src={"./images/icn_right_arrow.svg"}
+              src={"/images/icn_right_arrow.svg"}
               alt="cart_icon"
               width={16}
               height={16}
